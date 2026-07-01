@@ -121,12 +121,12 @@
 
     var btnPrimary = document.createElement("a");
     btnPrimary.className = "btn-primary";
-    btnPrimary.href = "/projects/";
+    btnPrimary.href = "/dev-blog/projects/";
     btnPrimary.innerHTML = '<i class="fas fa-briefcase"></i> 查看作品';
 
     var btnSecondary = document.createElement("a");
     btnSecondary.className = "btn-secondary";
-    btnSecondary.href = "/about/";
+    btnSecondary.href = "/dev-blog/about/";
     btnSecondary.innerHTML = '<i class="fas fa-user"></i> 了解更多';
 
     btnContainer.appendChild(btnPrimary);
@@ -316,7 +316,7 @@
 
     var links = [
       { icon: "fas fa-envelope", url: "mailto:lizhengzhi99@outlook.com", label: "Email" },
-      { icon: "fas fa-rss", url: "/atom.xml", label: "RSS" },
+      { icon: "fas fa-rss", url: "/dev-blog/atom.xml", label: "RSS" },
     ];
 
     links.forEach(function (link) {
@@ -454,9 +454,9 @@
       desc: "全栈快递物流业务管理平台，涵盖订单全生命周期管理。前端采用 React 18 搭配 TailwindCSS 构建响应式界面，后端基于 Express.js 提供 RESTful API，通过 MySQL 进行数据持久化。\n\n系统实现多角色权限控制（管理员/快递员/客户），集成 Chart.js 实现业务数据可视化统计报表（日报/周报/月报趋势分析），支持订单状态跟踪、物流轨迹展示、仓库库存出入库管理以及快递员绩效统计等核心功能。前后端通过 concurrently 实现一键协同开发，使用 nodemon 支持后端热重载。",
       tags: ["React 18", "TailwindCSS 3", "Express.js", "MySQL", "Chart.js", "JWT"],
       screenshots: [
-        { label: "订单管理", url: "/img/projects/快递业务管理1.png" },
-        { label: "数据看板", url: "/img/projects/快递业务管理2.png" },
-        { label: "物流跟踪", url: "/img/projects/快递业务管理3.png" }
+        { label: "订单管理", url: "/dev-blog/img/projects/快递业务管理1.png" },
+        { label: "数据看板", url: "/dev-blog/img/projects/快递业务管理2.png" },
+        { label: "物流跟踪", url: "/dev-blog/img/projects/快递业务管理3.png" }
       ],
       links: []
     },
@@ -468,9 +468,9 @@
       desc: "基于 JavaFX 的跨语言桌面端代码生成器，采用 FreeMarker 模板引擎，支持从图形化数据模型一键生成 Java/Spring Boot、Python、Go 全栈工程代码。\n\n项目采用插件化架构设计（SPI 机制），内置三大插件体系：模型来源插件（支持 MySQL/PostgreSQL 数据库反向解析、Swagger/OpenAPI 导入、GraphQL Schema 导入）、模板仓库插件（本地文件夹/Git 仓库）、后处理器插件（代码静态分析、Java 格式整理）。\n\n集成 AI 助手（通过 Ollama 本地大模型支持自然语言建表和模板智能补全）。支持三种生成策略（覆盖/保护区域/智能合并），可直接输出完整 Spring Boot 项目骨架，全部处理在本地完成，零网络依赖。",
       tags: ["Java 17", "JavaFX 21", "FreeMarker", "Maven", "SPI", "SQLite", "Jackson", "RichTextFX"],
       screenshots: [
-        { label: "模型编辑器", url: "/img/projects/代码生成器1.png" },
-        { label: "模板配置", url: "/img/projects/代码生成器2.png" },
-        { label: "AI 助手", url: "/img/projects/代码生成器3.png" }
+        { label: "模型编辑器", url: "/dev-blog/img/projects/代码生成器1.png" },
+        { label: "模板配置", url: "/dev-blog/img/projects/代码生成器2.png" },
+        { label: "AI 助手", url: "/dev-blog/img/projects/代码生成器3.png" }
       ],
       links: []
     },
@@ -482,9 +482,9 @@
       desc: "自研 Canvas 渲染引擎的塔防策略网页游戏，使用 TypeScript 开发，核心游戏循环与物理逻辑独立于 React 渲染层。\n\n设计 5 种特色防御塔（激光塔、脉冲塔、冰冻塔、雷暴塔、毁灭塔）和 8 种敌人类型（普通、快速、重甲、BOSS、虫群、护盾、飞行等），拥有完整的相克体系与特效系统。独创三路径系统（橙/绿/紫），每条路径赋予敌人不同的属性加成（速度/生命/护甲），动态解锁机制增加策略深度。\n\n实现了天赋树系统、附魔词条系统、星级升级系统、障碍物建造与增益点机制、波次全局增益等多重玩法系统，支持 localStorage 持久化游戏进度和最高分记录。",
       tags: ["TypeScript", "React 18", "Canvas 2D", "Zustand", "TailwindCSS", "Vite"],
       screenshots: [
-        { label: "战斗场景", url: "/img/projects/塔防游戏1.png" },
-        { label: "天赋树", url: "/img/projects/塔防游戏2.png" },
-        { label: "防御塔升级", url: "/img/projects/塔防游戏3.png" }
+        { label: "战斗场景", url: "/dev-blog/img/projects/塔防游戏1.png" },
+        { label: "天赋树", url: "/dev-blog/img/projects/塔防游戏2.png" },
+        { label: "防御塔升级", url: "/dev-blog/img/projects/塔防游戏3.png" }
       ],
       links: []
     },
@@ -496,9 +496,9 @@
       desc: "面向 60 岁以上老年人的适老化医疗导诊 Web 应用，以语音交互驱动全流程就医引导，降低老年人数字就医门槛。\n\n国风适老化 UI：象牙白底色搭配宣纸纹理、石青色主按钮、思源宋体标题，对比度 ≥ 4.5:1 满足 WCAG 标准。双向语音交互：按住说话识别中文指令 + 自动慢速朗读回复，自研三层筛选算法解决跨浏览器中文语音降级问题。分级防抖机制：局部锁定 Hook 实现 5 级锁定时长（0.8s~4s）配合 Loading 动画与语音反馈，杜绝全局锁定带来的卡顿体验。\n\n紧急联系人功能使用 localStorage 持久化存储，智能判断有/无号码走不同引导流程。采用 vite-plugin-singlefile 打包为单 HTML 文件，支持 file:// 协议离线运行。",
       tags: ["React 18", "TypeScript", "Vite", "TailwindCSS", "Zustand", "Web Speech API"],
       screenshots: [
-        { label: "语音导诊", url: "/img/projects/就医引导助手1.png" },
-        { label: "科室推荐", url: "/img/projects/就医引导助手2.png" },
-        { label: "紧急联系", url: "/img/projects/就医引导助手3.png" }
+        { label: "语音导诊", url: "/dev-blog/img/projects/就医引导助手1.png" },
+        { label: "科室推荐", url: "/dev-blog/img/projects/就医引导助手2.png" },
+        { label: "紧急联系", url: "/dev-blog/img/projects/就医引导助手3.png" }
       ],
       links: []
     },
@@ -510,9 +510,9 @@
       desc: "基于 WorkBuddy AI 平台搭建的社区杂货店智慧运营系统，通过 AI Agent 设计实现店铺数字化管理。\n\n系统设计三大 AI 角色：账房先生（自动记账、库存管理、利润核算、Excel 台账更新）、宣传干事（滞销品预警、天气联动备货建议、朋友圈营销文案生成）、知心大姐（熟客关系维护、赊账管理、定期召回、生日关怀）。\n\n通过精细化的 System Prompt 工程 + 结构化数据文件（TXT/Excel），实现自然语言交互驱动店铺全流程数字化运营，覆盖商品进销存、定价策略、抹零赊账规则、节假日营销等真实场景。",
       tags: ["AI Agent", "Excel 自动化", "自然语言交互", "Prompt 工程", "文件系统集成"],
       screenshots: [
-        { label: "账房先生", url: "/img/projects/杂货铺1.png" },
-        { label: "宣传干事", url: "/img/projects/杂货铺2.png" },
-        { label: "知心大姐", url: "/img/projects/杂货铺3.png" }
+        { label: "账房先生", url: "/dev-blog/img/projects/杂货铺1.png" },
+        { label: "宣传干事", url: "/dev-blog/img/projects/杂货铺2.png" },
+        { label: "知心大姐", url: "/dev-blog/img/projects/杂货铺3.png" }
       ],
       links: []
     }
