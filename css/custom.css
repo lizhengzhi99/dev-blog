@@ -943,10 +943,14 @@ a:hover {
   margin: 0 auto;
 }
 
-/* 文章页隐藏顶图 */
-.post-bg,
+/* 文章页隐藏顶图（保留标题与导航，隐藏封面图本身） */
 #post > .post-info {
   display: none !important;
+}
+
+#page-header.post-bg {
+  background-image: none !important;
+  background-color: transparent;
 }
 
 #post #article-container {

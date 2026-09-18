@@ -111,7 +111,7 @@
     var siteTitle = document.getElementById("site-title");
     if (!siteTitle) return;
 
-    var inner = header.querySelector(".site-info");
+    var inner = header.querySelector("#site-info, .site-info");
     if (!inner) return;
 
     if (inner.querySelector(".hero-buttons")) return;

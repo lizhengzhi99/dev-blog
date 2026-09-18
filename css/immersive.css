@@ -1,0 +1,518 @@
+/* ===================================
+   沉浸式视觉重做层
+   3D Hero + 渐变光晕 + 毛玻璃 + 动态效果
+   加载于 custom.css 之后，用于覆盖与增强
+   =================================== */
+
+/* ---------- 变量增强 ---------- */
+:root {
+  --i-cyan: #22d3ee;
+  --i-blue: #3b82f6;
+  --i-indigo: #818cf8;
+  --i-deep: #05060f;
+  --i-deep-2: #0a0f24;
+  --i-deep-3: #101c3d;
+  --i-glow: 0 0 40px rgba(59, 130, 246, 0.35);
+  --i-gradient: linear-gradient(120deg, #3b82f6 0%, #22d3ee 50%, #818cf8 100%);
+}
+
+/* ===================================
+   首页 3D Hero
+   =================================== */
+
+.has-hero-3d #page-header.full_page {
+  background: radial-gradient(
+    ellipse 90% 70% at 50% 0%,
+    #16264d 0%,
+    #0a0f24 45%,
+    #05060f 100%
+  ) !important;
+  background-image: radial-gradient(
+    ellipse 90% 70% at 50% 0%,
+    #16264d 0%,
+    #0a0f24 45%,
+    #05060f 100%
+  ) !important;
+}
+
+/* 3D 画布层 */
+.hero-3d-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+  opacity: 1;
+}
+
+/* 网格纹理叠加 */
+.has-hero-3d #page-header.full_page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  top: 0;
+  right: 0;
+  border-radius: 0;
+  background-image: linear-gradient(
+      rgba(59, 130, 246, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.has-hero-3d #page-header.full_page #site-info {
+  position: relative;
+  top: auto !important;
+  left: auto !important;
+  z-index: 2;
+}
+
+/* Hero 文字改为浅色 */
+.has-hero-3d #page-header #site-title {
+  color: #f2f6ff !important;
+  background: linear-gradient(120deg, #ffffff 0%, #bcd4ff 45%, #7fe7f5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 60px rgba(59, 130, 246, 0.35);
+}
+
+.has-hero-3d #page-header #site-subtitle {
+  color: #9db2d8 !important;
+}
+
+.has-hero-3d .typewriter-cursor {
+  background: linear-gradient(180deg, var(--i-cyan), var(--i-blue));
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
+}
+
+.has-hero-3d .scroll-hint {
+  color: #7d92bd;
+}
+
+/* Hero 按钮发光 */
+.has-hero-3d .hero-buttons .btn-primary {
+  background: var(--i-gradient);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.45), 0 2px 8px rgba(34, 211, 238, 0.3);
+  color: #06101f !important;
+  font-weight: 700;
+}
+
+.has-hero-3d .hero-buttons .btn-primary:hover {
+  box-shadow: 0 14px 44px rgba(59, 130, 246, 0.6), 0 4px 12px rgba(34, 211, 238, 0.4);
+}
+
+.has-hero-3d .hero-buttons .btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(140, 170, 230, 0.35);
+  color: #dbe6ff !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.has-hero-3d .hero-buttons .btn-secondary:hover {
+  border-color: var(--i-cyan);
+  background: rgba(34, 211, 238, 0.1);
+  color: #ffffff !important;
+  box-shadow: 0 8px 30px rgba(34, 211, 238, 0.25);
+}
+
+/* ---------- 导航栏站点名颜色 ----------
+   Butterfly 默认 #nav #blog-info { color: var(--light-grey) }（#eee），
+   而 custom.css 把导航背景定为白色，会出现白底白字。此处按状态修正。 */
+#nav #blog-info,
+#nav #blog-info .nav-site-title,
+#nav #blog-info .site-name {
+  color: var(--c-text) !important;
+}
+
+/* ---------- 导航栏在首页顶部的透明适配 ---------- */
+.has-hero-3d #nav:not(.scrolled) {
+  background: transparent !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent !important;
+}
+
+.has-hero-3d #nav:not(.scrolled) .site-page,
+.has-hero-3d #nav:not(.scrolled) #search-button .site-page {
+  color: #e6eeff !important;
+}
+
+.has-hero-3d #nav:not(.scrolled) #blog-info,
+.has-hero-3d #nav:not(.scrolled) #blog-info .nav-site-title,
+.has-hero-3d #nav:not(.scrolled) #blog-info .site-name {
+  color: #e6eeff !important;
+}
+
+.has-hero-3d #nav:not(.scrolled) .site-page:hover,
+.has-hero-3d #nav:not(.scrolled) .site-page.active {
+  color: #ffffff !important;
+}
+
+/* ===================================
+   内页沉浸式横幅
+   =================================== */
+
+.has-inner-hero #page-header:not(.full_page) {
+  background: radial-gradient(
+    ellipse 110% 150% at 50% 0%,
+    #16264d 0%,
+    #0a0f24 52%,
+    #05060f 100%
+  ) !important;
+  background-image: radial-gradient(
+    ellipse 110% 150% at 50% 0%,
+    #16264d 0%,
+    #0a0f24 52%,
+    #05060f 100%
+  ) !important;
+}
+
+.inner-hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+}
+
+/* 网格纹理叠加 */
+.has-inner-hero #page-header:not(.full_page)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  top: 0;
+  right: 0;
+  border-radius: 0;
+  background: none;
+  background-image: linear-gradient(
+      rgba(59, 130, 246, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
+  background-size: 52px 52px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 130% at 50% 0%,
+    #000 10%,
+    transparent 80%
+  );
+  mask-image: radial-gradient(
+    ellipse 85% 130% at 50% 0%,
+    #000 10%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 主题把 #page-site-info 设成 absolute + top:200px，在 320px 横幅里偏低，改为垂直居中 */
+.has-inner-hero #page-header:not(.full_page) #page-site-info {
+  top: 50% !important;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.has-inner-hero #page-header:not(.full_page) #site-title {
+  font-size: clamp(34px, 4.6vw, 54px) !important;
+  margin-bottom: 0 !important;
+  color: #f2f6ff !important;
+  background: linear-gradient(120deg, #ffffff 0%, #bcd4ff 45%, #7fe7f5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 60px rgba(59, 130, 246, 0.35) !important;
+  animation: heroUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 文章页横幅：标题 + 元信息 */
+.has-inner-hero #page-header:not(.full_page) #post-info {
+  top: 50% !important;
+  transform: translateY(-50%);
+  z-index: 2;
+  padding: 0 24px;
+}
+
+.has-inner-hero #page-header:not(.full_page) #post-info .post-title {
+  font-size: clamp(26px, 3.2vw, 40px) !important;
+  color: #f2f6ff !important;
+  text-shadow: 0 0 60px rgba(59, 130, 246, 0.35) !important;
+  animation: heroUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.has-inner-hero #page-header:not(.full_page) #post-meta,
+.has-inner-hero #page-header:not(.full_page) #post-meta a,
+.has-inner-hero #page-header:not(.full_page) #post-meta time,
+.has-inner-hero #page-header:not(.full_page) #post-meta span {
+  color: #9db2d8 !important;
+  text-shadow: none !important;
+}
+
+/* 内页顶部透明导航（深色横幅之上） */
+.has-inner-hero #nav:not(.scrolled) {
+  background: transparent !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent !important;
+}
+
+.has-inner-hero #nav:not(.scrolled) .site-page,
+.has-inner-hero #nav:not(.scrolled) #toggle-menu,
+.has-inner-hero #nav:not(.scrolled) #search-button .site-page {
+  color: #dbe6ff !important;
+}
+
+.has-inner-hero #nav:not(.scrolled) #blog-info,
+.has-inner-hero #nav:not(.scrolled) #blog-info .nav-site-title,
+.has-inner-hero #nav:not(.scrolled) #blog-info .site-name {
+  color: #e6eeff !important;
+}
+
+.has-inner-hero #nav:not(.scrolled) .site-page:hover,
+.has-inner-hero #nav:not(.scrolled) .site-page.active {
+  color: #ffffff !important;
+}
+
+/* ===================================
+   滚动进度条
+   =================================== */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: var(--i-gradient);
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+}
+
+/* ===================================
+   鼠标光晕
+   =================================== */
+
+.mouse-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 460px;
+  height: 460px;
+  margin: -230px 0 0 -230px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.09) 0%,
+    rgba(34, 211, 238, 0.05) 40%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.mouse-glow.active {
+  opacity: 1;
+}
+
+/* ===================================
+   卡片 3D 倾斜
+   =================================== */
+
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.portfolio-card.tilt-card {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s ease;
+}
+
+/* ===================================
+   进场增强动画
+   =================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 区块标题渐变描边光效 */
+.section-title {
+  background: linear-gradient(120deg, #12203f 0%, #1e3a6e 40%, #0f3460 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===================================
+   卡片毛玻璃增强
+   =================================== */
+
+.portfolio-card {
+  background: linear-gradient(160deg, #ffffff 0%, #fbfcff 100%);
+  border: 1px solid rgba(226, 232, 245, 0.9);
+  box-shadow: 0 1px 2px rgba(16, 28, 61, 0.04),
+    0 12px 32px -12px rgba(16, 28, 61, 0.12);
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    140deg,
+    rgba(59, 130, 246, 0.5),
+    rgba(34, 211, 238, 0.25) 40%,
+    transparent 70%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.portfolio-card:hover::before {
+  opacity: 1;
+}
+
+.portfolio-card:hover {
+  box-shadow: 0 8px 24px -8px rgba(59, 130, 246, 0.28),
+    0 24px 56px -20px rgba(16, 28, 61, 0.22);
+}
+
+/* ===================================
+   Hero 首屏动画时间轴（文字错峰进场）
+   =================================== */
+
+.has-hero-3d #page-header #site-title {
+  animation: heroUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.has-hero-3d #page-header #site-subtitle {
+  animation: heroUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+.has-hero-3d .hero-buttons {
+  animation: heroUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.has-hero-3d #site_social_icons {
+  animation: heroUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+}
+
+@keyframes heroUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ===================================
+   页脚光效增强
+   =================================== */
+
+#footer {
+  position: relative;
+  overflow: hidden;
+}
+
+#footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 130, 246, 0.5),
+    rgba(34, 211, 238, 0.5),
+    transparent
+  );
+}
+
+/* ===================================
+   响应式与降级
+   =================================== */
+
+@media (max-width: 768px) {
+  .mouse-glow {
+    display: none;
+  }
+
+  .tilt-card {
+    transform: none !important;
+  }
+
+  .has-hero-3d #page-header.full_page {
+    background: radial-gradient(
+      ellipse 120% 60% at 50% 0%,
+      #16264d 0%,
+      #0a0f24 55%,
+      #05060f 100%
+    ) !important;
+  }
+}
+
+/* 用户偏好减少动效时全部降级 */
+@media (prefers-reduced-motion: reduce) {
+  .hero-3d-canvas,
+  .inner-hero-canvas {
+    display: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .has-hero-3d #page-header #site-title,
+  .has-hero-3d #page-header #site-subtitle,
+  .has-hero-3d .hero-buttons,
+  .has-hero-3d #site_social_icons,
+  .has-inner-hero #page-header #site-title {
+    animation: none;
+  }
+}
